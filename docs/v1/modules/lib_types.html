@@ -784,5 +784,20 @@
     </div>
     <div class="overlay"></div>
     <script src="../assets/main.js"></script>
-  </body>
+ <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const supabase = supabase.createClient(
+    'https://wsoiitdkzlgtjriyuelz.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indzb2lpdGRremxndGpyaXl1ZWx6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA3MTk0NzYsImV4cCI6MjA2NjI5NTQ3Nn0.iBGvDKNfpAn7yiEAy-Ilc84VUvybkQI0aOSMk8P2y7M'
+  );
+
+  supabase.auth.getSession().then(({ data: { session } }) => {
+    if (session) {
+      console.log('Usuario conectado:', session.user.email);
+    } else {
+      console.log('No hay sesión iniciada');
+    }
+  });
+</script>
+ </body>
 </html>
